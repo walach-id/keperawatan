@@ -63,6 +63,10 @@
             transition: 0.3s;
         }
 
+        .peach {
+            background-color: #ff7468;
+        }
+
         .header-3-2 .card {
             box-shadow: -4px 4px 10px 0px rgba(224, 224, 224, 0.25);
             transition: 0.4s;

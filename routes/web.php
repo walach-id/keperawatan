@@ -24,3 +24,11 @@ Route::get('/home', function () {
 Route::get('/form-gejala', function () {
     return view('form_gejala');
 });
+
+Route::get('/terapi-nyeri', function () {
+    return view('metode_terapi.terapi_nyeri');
+});
+
+Route::get('/langkah-langkah-terapi', function () {
+    return view('step_terapi');
+});
