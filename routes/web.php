@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\gejalaController;
+use App\Http\Controllers\penyakitController;
+use App\Http\Controllers\terapiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,18 +20,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
-
-Route::get('/form-gejala', function () {
-    return view('form_gejala');
-});
-
-Route::get('/terapi-nyeri', function () {
-    return view('metode_terapi.terapi_nyeri');
-});
-
-Route::get('/langkah-langkah-terapi', function () {
-    return view('step_terapi');
-});
+Route::get('/home', [penyakitController::class, 'index']);
+Route::get('/form_gejala/{kode}', [gejalaController::class, 'index']);
+Route::post('/add/gejala', [gejalaController::class, 'add_gejala']);
+Route::get('terapi/{id}', [terapiController::class, 'index']);
+Route::get('step_terapi/{id}/?nama=', [terapiController::class, 'langkah_terapi']);

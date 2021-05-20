@@ -171,6 +171,50 @@
             }
         }
 
+        ol {
+            list-style-type: decimal;
+            padding-left: 2.5rem
+                /* 40px */
+            ;
+            padding-right: 2.5rem
+                /* 40px */
+            ;
+            padding-top: 1.25rem
+                /* 20px */
+            ;
+            padding-bottom: 1.25rem
+                /* 20px */
+            ;
+            text-align: justify;
+        }
+
+        ul {
+            list-style-type: circle;
+            padding-left: 2.5rem
+                /* 40px */
+            ;
+            padding-right: 2.5rem
+                /* 40px */
+            ;
+            padding-top: 1.25rem
+                /* 20px */
+            ;
+            padding-bottom: 1.25rem
+                /* 20px */
+            ;
+            text-align: justify;
+        }
+
+        li {
+            margin-bottom: 0.5rem
+                /* 8px */
+            ;
+        }
+
+        li p {
+            margin-bottom: 0.5rem;
+        }
+
     </style>
 </head>
 
