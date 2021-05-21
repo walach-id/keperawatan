@@ -16,6 +16,10 @@ use App\Http\Controllers\terapiController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
     return view('index');
 });
@@ -25,3 +29,13 @@ Route::get('/form_gejala/{kode}', [gejalaController::class, 'index']);
 Route::post('/add/gejala', [gejalaController::class, 'add_gejala']);
 Route::get('terapi/{id}', [terapiController::class, 'index']);
 Route::get('step_terapi/{id}/?nama=', [terapiController::class, 'langkah_terapi']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::get('/admin', function () {
+    return view('admin.home');
+})->middleware(['role:admin'])->name('admin');
+
+require __DIR__ . '/auth.php';
