@@ -13,7 +13,29 @@ class gejalaModel extends Model
     public function gejala_penyakit($id)
     {
         return DB::table('gejala')
-            ->where('nama_penyakit', $id)
+            ->where('id_penyakit', $id)
             ->get();
+    }
+
+    public function gejaladanpenyakit($id)
+    {
+        return DB::table('gejala')
+            ->leftJoin('penyakit', 'penyakit.id', '=', 'gejala.id_penyakit')
+            ->where('gejala.id_penyakit', $id)
+            ->get();
+    }
+
+    public function addDataGejala($id, $data)
+    {
+        DB::table('gejala')
+            ->where('id_penyakit', $id)
+            ->insert($data);
+    }
+
+    public function hapusDataGejala($kode)
+    {
+        DB::table('gejala')
+            ->where('id', $kode)
+            ->delete();
     }
 }

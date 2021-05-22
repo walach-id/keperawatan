@@ -34,8 +34,25 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+// route admin
 Route::get('/admin', function () {
     return view('admin.home');
 })->middleware(['role:admin'])->name('admin');
+
+Route::get('/penyakit', [penyakitController::class, 'adminIndex'])->middleware(['role:admin']);
+Route::get('/penyakit/add', function () {
+    return view('admin/penyakit.add_penyakit');
+})->middleware(['role:admin']);
+Route::post('/penyakit/add/proses', [penyakitController::class, 'addDataPenyakit'])->middleware(['role:admin']);
+Route::get('/penyakit/hapus/{kode}', [penyakitController::class, 'hapusDataPenyakit'])->middleware(['role:admin']);
+Route::get('/penyakit/edit/{kode}', [penyakitController::class, 'detailPenyakit'])->middleware(['role:admin']);
+Route::post('/penyakit/edit/proses/{kode}', [penyakitController::class, 'editDataPenyakit'])->middleware(['role:admin']);
+
+Route::get('/gejala/{id}', [gejalaController::class, 'gejala_penyakit'])->middleware(['role:admin']);
+Route::get('/gejala/add/{id}', [gejalaController::class, 'formAddGejala'])->middleware(['role:admin']);
+Route::post('/gejala/add/proses/{id}', [gejalaController::class, 'addDataGejala'])->middleware(['role:admin']);
+Route::get('/gejala/hapus/{kode}', [gejalaController::class, 'hapusDataGejala'])->middleware(['role:admin']);
+
+
 
 require __DIR__ . '/auth.php';

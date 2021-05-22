@@ -4,8 +4,10 @@
     <div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">
 
         <div class="w-1/2 pl-2 md:pl-0">
-            <a class="text-gray-900 text-base xl:text-xl no-underline hover:no-underline font-bold" href="#">
-                <i class="fas fa-sun text-pink-600 pr-3"></i> Admin Day Mode
+            <a class="text-gray-900 flex items-center text-base xl:text-xl no-underline hover:no-underline font-bold"
+                href="#">
+                <img src="/image/1618636686949.png" alt="" class="" width="60" height="60" />
+                <p class="px-3 font-semibold">STIKIM | Keperawatan</p>
             </a>
         </div>
         <div class="w-1/2 pr-0">
@@ -103,25 +105,25 @@
                 <li class="mr-6 my-2 md:my-0">
                     <a href="#"
                         class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-900 border-b-2 border-white hover:border-pink-500">
-                        <i class="fas fa-tasks fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Tasks</span>
+                        <i class="fas fa-tasks fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Penyakit</span>
                     </a>
                 </li>
                 <li class="mr-6 my-2 md:my-0">
                     <a href="#"
                         class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-900 border-b-2 border-white hover:border-purple-500">
-                        <i class="fa fa-envelope fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Messages</span>
+                        <i class="fa fa-envelope fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Gejala</span>
                     </a>
                 </li>
                 <li class="mr-6 my-2 md:my-0">
                     <a href="#"
                         class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-900 border-b-2 border-white hover:border-green-500">
-                        <i class="fas fa-chart-area fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Analytics</span>
+                        <i class="fas fa-chart-area fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Treatment</span>
                     </a>
                 </li>
                 <li class="mr-6 my-2 md:my-0">
                     <a href="#"
                         class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-900 border-b-2 border-white hover:border-red-500">
-                        <i class="fa fa-wallet fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Payments</span>
+                        <i class="fa fa-wallet fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Jurnal</span>
                     </a>
                 </li>
             </ul>
