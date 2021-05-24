@@ -37,8 +37,12 @@
                     @auth
                         <a href="#"
                             class="text-sm text-black-1 font-medium mx-0 lg:mx-5 my-4 lg:hidden lg:my-0 relative">{{ Auth::user()->nama_lengkap }}</a>
-                        <a href="#" class="text-sm text-black-2 font-light mx-0 lg:mx-5 my-4 lg:my-0 relative">Home</a>
-                        <a href="#" class="text-sm text-black-2 font-light mx-0 lg:mx-5 my-4 lg:my-0 relative">Evaluasi</a>
+                        <a href="{{ url('/home') }}"
+                            class="text-sm text-black-2 font-light mx-0 lg:mx-5 my-4 lg:my-0 relative">Home</a>
+                        <a href="{{ url('/evaluasi') }}"
+                            class="text-sm text-black-2 font-light mx-0 lg:mx-5 my-4 lg:my-0 relative">Evaluasi</a>
+                        <a href="{{ url('/rating') }}"
+                            class="text-sm text-black-2 font-light mx-0 lg:mx-5 my-4 lg:my-0 relative">Ratings & Reviews</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
@@ -104,7 +108,7 @@
 
                                         <x-dropdown-link :href="route('logout')"
                                             onclick="event.preventDefault();
-                                                                                                                                this.closest('form').submit();">
+                                                                                                                                                                                                    this.closest('form').submit();">
                                             {{ __('Log Out') }}
                                         </x-dropdown-link>
                                     </form>

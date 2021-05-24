@@ -47,14 +47,14 @@
 
             <!-- kota -->
             <div class="mt-4">
-                <x-label for="kota" :value="__('kota')" />
+                <x-label for="kota" :value="__('Kota')" />
 
                 <x-input id="kota" class="block mt-1 w-full" type="text" name="kota" :value="old('kota')" required />
             </div>
 
             <!-- Diagnosa Medis -->
             <div class="mt-4">
-                <x-label for="diagnosa_medis" :value="__('Diagnosa Medis')" />
+                <x-label for="diagnosa_medis" :value="__('Diagnosa Medis (3 Bulan Terakhir)  ')" />
 
                 <x-input id="diagnosa_medis" class="block mt-1 w-full" type="text" name="diagnosa_medis"
                     :value="old('diagnosa_medis')" required />

@@ -24,4 +24,11 @@ class terapiModel extends Model
             ->where('nama_terapi', $id)
             ->get();
     }
+
+    public function addTerapi($unik_id, $data_update)
+    {
+        return DB::table('diagnosa_pasien')
+            ->where('unique_id', $unik_id)
+            ->update($data_update);
+    }
 }

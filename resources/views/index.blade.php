@@ -7,15 +7,13 @@
                 <!-- Left Column -->
                 <div
                     class="lg:flex-grow lg:w-1/2 flex flex-col lg:items-start lg:text-left mb-3 md:mb-12 lg:mb-0 items-center text-center">
-                    <h1 class="title-font text-black-1 sm:text-5xl lg:text-6xl text-4xl mb-5 font-semibold"
+                    <h1 class="mt-8 title-font text-black-1 sm:text-5xl lg:text-6xl text-4xl mb-5 font-semibold"
                         style="line-height: 1.25;">
-                        The New Way<br class="lg:block hidden" />
-                        <span style="color: #ff7468"> Learn Skills</span> From <br class="lg:block hidden" />
-                        Our Best Mentor
+                        Aplikasi Komplementer IT <br class="lg:block hidden" />
+                        <span style="color: #ff7468"> KOMPLIT</span>
                     </h1>
                     <p class="text-base text-black-2 font-light leading-6 tracking-wide mb-12 lg:mb-20">
-                        Hard to find a good mentor according to your wishes?<br class="sm:block hidden" /> Don't
-                        worry because we are here to help you
+                        PRODI PROGRAM PENDIDIKAN PROFESI NERS STIKES INDONESIA MAJU
                     </p>
                     <div
                         class="md:flex contents items-center mx-auto lg:mx-0 lg:flex justify-center lg:space-x-8 md:space-x-2 space-x-0">
@@ -130,16 +128,16 @@
                                     Aplikasi kami membantu anda mendapatkan solusi permasalahan kesehatan
                                 </p>
                             </div>
-                            <a class="inline-block items-center my-auto text-center">
-                                <button
-                                    class="btn-fill font-bold text-white text-base py-4 lg:w-full md:w-full sm:w-2/3 w-full rounded-xl mb-4 md:mb-5 lg:mb-5 focus:outline-none hover:shadow-lg">
+                            <div class="inline-block items-center my-auto text-center">
+                                <a href="{{ url('/login') }}"
+                                    class="inline-block items-center my-auto text-center btn-fill font-bold text-white text-base py-4 lg:w-full md:w-full sm:w-2/3 w-full rounded-xl mb-4 md:mb-5 lg:mb-5 focus:outline-none hover:shadow-lg">
                                     Login Sekarang
-                                </button>
-                                <button
-                                    class="btn-outline font-normal text-black text-base py-4 lg:w-full md:w-full sm:w-2/3 w-full px-6 rounded-xl focus:outline-none bg-transparent rounded hover:border-transparent">
+                                </a>
+                                <a href="{{ url('/register') }}"
+                                    class="mb-3 btn-outline font-normal text-black text-base py-4 lg:w-full md:w-full sm:w-2/3 w-full px-6 rounded-xl focus:outline-none bg-transparent hover:border-transparent">
                                     Daftar Sekarang
-                                </button>
-                            </a>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

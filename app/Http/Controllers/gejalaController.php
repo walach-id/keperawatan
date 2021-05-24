@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\gejalaModel;
 use App\Models\penyakitModel;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class gejalaController extends Controller
 {
@@ -14,6 +16,8 @@ class gejalaController extends Controller
         $this->gejalaModel = new gejalaModel();
         $this->penyakitModel = new penyakitModel();
     }
+
+
 
     public function index($id, Request $request)
     {
@@ -32,9 +36,37 @@ class gejalaController extends Controller
         $id_penyakit = $request->session()->get('penyakit');
 
         $jumlah_data = DB::table('gejala')->where('id_penyakit', $id_penyakit)->count();
+        //Mendapatkan nama penyakit
+        $nama_penyakit = DB::table('penyakit')->where('id', $id_penyakit)->value('nama_penyakit');
+
+        //Mendapatkan keluhan keluhan yg ada
+        $gejala = implode(", ", $input['gejala']);
+
+        //Mendapatkan ID User
+        $id = Auth::user()->id;
+
+        //Mendapat tgl hari ini
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl_mulai = date("Y/m/d");
+
+
+        //Hitung jumlah gejala dalam penyakit
+        $jumlah_data = DB::table('gejala')->where('nama_penyakit', $id_penyakit)->count();
+
+        $unik_id = uniqid();
+        $request->session()->put('id_diagnosa', $unik_id);
 
         $hasil = ($arrlength / $jumlah_data) * 100;
         if ($hasil >= 50) {
+            $data = [
+                'unique_id' => $unik_id,
+                'id_user' => $id,
+                'tgl_mulai' => $tgl_mulai,
+                'keluhan' => $nama_penyakit,
+                'jenis_keluhan' => $gejala
+            ];
+            $this->gejalaModel->addGejala($data);
+
             return redirect('/terapi/' . $id_penyakit);
         } else {
             return redirect('/form_gejala/' . $id_penyakit)->with(['pesan' => 'Opps :( pilihan gejala anda kurang, pilih lebih banyak ya']);
@@ -79,5 +111,52 @@ class gejalaController extends Controller
     {
         $this->gejalaModel->hapusDataGejala($kode);
         return back();
+    }
+
+    public function update_gejala(Request $request, $id)
+    {
+
+        $input = $request->all();
+        $input['gejala'] = $request->input('gejala');
+        $arrlength = count($input['gejala']);
+        $id_penyakit = $request->session()->get('penyakit');
+
+        //Mendapatkan nama penyakit
+        $nama_penyakit = DB::table('penyakit')->where('id', $id_penyakit)->value('nama_penyakit');
+
+        //Mendapatkan keluhan keluhan yg ada
+        $gejala = implode(", ", $input['gejala']);
+
+        //Mendapatkan ID User
+        $id = Auth::user()->id;
+
+        //Mendapat tgl hari ini
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl_mulai = date("Y/m/d");
+
+
+        //Hitung jumlah gejala dalam penyakit
+        $jumlah_data = DB::table('gejala')->where('nama_penyakit', $id_penyakit)->count();
+
+        $unik_id = uniqid();
+        $request->session()->put('id_diagnosa', $unik_id);
+
+        $hasil = ($arrlength / $jumlah_data) * 100;
+        $data = [
+            'jenis_keluhan' => $gejala
+        ];
+        $this->gejalaModel->updateGejala($data, session('unique_id'));
+        return redirect('/evaluasi/detail/' . session('unique_id'));
+
+        // if ($hasil >= 50) {
+        //     $data = [
+        //         'jenis_keluhan' => $gejala
+        //     ];
+        //     $this->gejalaModel->updateGejala($data, session('unique_id'));
+
+        //     return redirect('/evaluasi/detail/' . session('unique_id'));
+        // } else {
+        //     return redirect('/evaluasi/pra/' . session('unique_id'))->with(['pesan' => 'Opps :( pilihan keluhan anda kurang, pilih lebih banyak ya']);
+        // }
     }
 }

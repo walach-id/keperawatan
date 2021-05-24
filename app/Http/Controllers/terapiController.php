@@ -18,7 +18,10 @@ class terapiController extends Controller
         $data = [
             'terapi' => $this->terapiModel->terapi_penyakit($id)
         ];
-        $request->session()->put('terapi', $id);
+        $unik_id = $request->session()->get('id_diagnosa');
+
+
+
         return view('metode_terapi.terapi', $data);
     }
 
@@ -28,12 +31,22 @@ class terapiController extends Controller
             'step_terapi' => $this->terapiModel->metode_terapi($id)
         ];
         $terapi = DB::table('intervensi_komplementer')
-            ->select('nama_terapi')
             ->where('id', $id)->get();
 
         foreach ($terapi as $item) {
             $nama_terapi =  $request->session()->put('terapi', $item->nama_terapi);
+            $nama = $item->nama_terapi;
+            $id_terapi = $item->penyakit;
         }
+
+        $request->session()->put('terapi', $id);
+        $unik_id = $request->session()->get('id_diagnosa');
+
+        $data_update = [
+            'terapi' => $nama,
+            'keluhan_id' => $id_terapi
+        ];
+        $this->terapiModel->addTerapi($unik_id, $data_update);
 
         return view('step_terapi', $data);
     }

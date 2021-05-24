@@ -11,7 +11,7 @@
                     </h1>
                     <h2
                         class="text-base font-light title-font mx-12 lg:w-full md:w-full sm:w-3/6 sm:mx-auto text-medium-black">
-                        Membantu mendapatkan solusi terapi untuk permasalahan kesehatan
+                        Apa yang kamu alami saat ini ?
                     </h2>
                 </div>
                 <div class="flex flex-wrap w-full">

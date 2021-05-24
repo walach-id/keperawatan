@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\evaluasiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\gejalaController;
 use App\Http\Controllers\penyakitController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\terapiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +27,20 @@ Route::get('/', function () {
     return view('index');
 });
 
+
+
 Route::get('/home', [penyakitController::class, 'index']);
 Route::get('/form_gejala/{kode}', [gejalaController::class, 'index']);
 Route::post('/add/gejala', [gejalaController::class, 'add_gejala']);
+Route::post('/update/gejala/{id}', [gejalaController::class, 'update_gejala']);
 Route::get('terapi/{id}', [terapiController::class, 'index']);
-Route::get('step_terapi/{id}/?nama=', [terapiController::class, 'langkah_terapi']);
+Route::get('step_terapi/{id}', [terapiController::class, 'langkah_terapi']);
+Route::get('evaluasi', [evaluasiController::class, 'index']);
+Route::get('evaluasi/detail/{unique_id}', [evaluasiController::class, 'detail']);
+Route::get('evaluasi/pra/{unique_id}', [evaluasiController::class, 'pra_evaluasi']);
+
+Route::get('rating', [RatingController::class, 'rating']);
+Route::post('/add/rating', [RatingController::class, 'add_rating']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
