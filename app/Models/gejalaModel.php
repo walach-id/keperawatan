@@ -10,6 +10,12 @@ class gejalaModel extends Model
 {
     use HasFactory;
 
+
+    public function addGejala($data)
+    {
+        DB::table('diagnosa_pasien')->insert($data);
+    }
+
     public function gejala_penyakit($id)
     {
         return DB::table('gejala')

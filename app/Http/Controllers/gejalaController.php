@@ -51,7 +51,7 @@ class gejalaController extends Controller
 
 
         //Hitung jumlah gejala dalam penyakit
-        $jumlah_data = DB::table('gejala')->where('nama_penyakit', $id_penyakit)->count();
+        $jumlah_data = DB::table('gejala')->where('id_penyakit', $id_penyakit)->count();
 
         $unik_id = uniqid();
         $request->session()->put('id_diagnosa', $unik_id);
@@ -136,7 +136,7 @@ class gejalaController extends Controller
 
 
         //Hitung jumlah gejala dalam penyakit
-        $jumlah_data = DB::table('gejala')->where('nama_penyakit', $id_penyakit)->count();
+        $jumlah_data = DB::table('gejala')->where('id_penyakit', $id_penyakit)->count();
 
         $unik_id = uniqid();
         $request->session()->put('id_diagnosa', $unik_id);

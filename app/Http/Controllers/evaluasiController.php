@@ -37,7 +37,6 @@ class evaluasiController extends Controller
     {
         Request()->session()->put('unique_id', $unique_id);
 
-
         $data = [
             'detail' => $this->evaluasiModel->pra($unique_id),
             'langkah_terapi' =>   DB::table('gejala')
