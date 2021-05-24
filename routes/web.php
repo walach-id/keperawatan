@@ -64,7 +64,19 @@ Route::get('/gejala/{id}', [gejalaController::class, 'gejala_penyakit'])->middle
 Route::get('/gejala/add/{id}', [gejalaController::class, 'formAddGejala'])->middleware(['role:admin']);
 Route::post('/gejala/add/proses/{id}', [gejalaController::class, 'addDataGejala'])->middleware(['role:admin']);
 Route::get('/gejala/hapus/{kode}', [gejalaController::class, 'hapusDataGejala'])->middleware(['role:admin']);
+Route::get('/gejala/edit/{kode}', [gejalaController::class, 'detail_gejala_penyakit'])->middleware(['role:admin']);
+Route::post('/gejala/edit/proses/{kode}', [gejalaController::class, 'editDataGejala'])->middleware(['role:admin']);
 
+Route::get('/treatment', [terapiController::class, 'namaTerapi'])->middleware(['role:admin']);
+Route::get('/treatment/add', [terapiController::class, 'formTerapi'])->middleware(['role:admin']);
+Route::post('/treatment/add/proses', [terapiController::class, 'addDataTerapi'])->middleware(['role:admin']);
+Route::get('/treatment/hapus/{kode}', [terapiController::class, 'hapusDataTerapi'])->middleware(['role:admin']);
+
+Route::get('/step-treatment/{id}', [terapiController::class, 'lengkah_terapi'])->middleware(['role:admin']);
+
+Route::get('/step-treatment/add', function () {
+    return view('admin.langkah_terapi.add_langkah_terapi');
+})->middleware(['role:admin']);
 
 
 require __DIR__ . '/auth.php';

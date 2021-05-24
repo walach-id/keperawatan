@@ -54,11 +54,10 @@ class penyakitController extends Controller
 
     public function editDataPenyakit($kode)
     {
-        date_default_timezone_set("Asia/Jakarta");
+
         $data = [
             'nama_penyakit' => Request()->nama_penyakit,
             'kode_penyakit' => Request()->kode_penyakit,
-            'tgl_tambah' => date("Y-m-d h:i:s"),
         ];
 
         $this->penyakitModel->editDataPenyakit($kode, $data);

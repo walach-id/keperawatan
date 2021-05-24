@@ -6,12 +6,12 @@
             <!-- component -->
             <div class="w-full pt-3 block items-center justify-center xl:flex lg:flex">
 
-                <p class="text-4xl mb-5 ">Data Gejala Penyakit</p>
+                <p class="text-4xl mb-5 ">Langkah-langkah Treatment</p>
 
             </div>
             <div class="flex justify-center">
-                <div class="w-full lg:w-1/3 xl:w-1/3 rounded-xl bg-white border shadow-md">
-                    <p class="text-2xl my-3 text-center">Keluhan: {{ $penyakit->nama_penyakit }}</p>
+                <div class="w-full lg:w-1/2 xl:w-1/2 rounded-xl bg-white border shadow-md">
+                    <p class="text-2xl my-3 text-center">Langkah Terapi: {{ $terapi->nama_terapi }}</p>
                     <hr>
                     <div class="ml-5 my-3">
                         <div class="py-3 flex justify-center">
@@ -19,13 +19,15 @@
                                 class="bg-blue-500 px-4 py-2 font-semibold tracking-wider text-white rounded hover:bg-blue-600">Tambah
                                 data gejala</a>
                         </div>
-                        <p>Gejala:</p>
+
                         <table class="w-full">
-                            <?php $no = 1; ?>
-                            @foreach ($gejala as $data)
+
+                            @foreach ($langkah as $data)
                                 <tr>
-                                    <td>{{ $no++ }}. </td>
-                                    <td>{{ $data->nama_gejala }}</td>
+
+                                    <td class="px-5">
+                                        {!! $data->langkah_terapi !!}
+                                    </td>
                                     <td class="flex">
                                         <a href="/gejala/edit/{{ $data->id }}"
                                             class="w-4 mx-2 transform hover:text-purple-500 hover:scale-110">
@@ -55,4 +57,10 @@
 
 
     </div>
+    <style>
+        ol {
+            list-style-type: decimal;
+        }
+
+    </style>
 @endsection

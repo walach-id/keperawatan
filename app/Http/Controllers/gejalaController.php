@@ -74,14 +74,26 @@ class gejalaController extends Controller
     }
 
     // controller admin
-    public function gejala_penyakit($id)
+    public function gejala_penyakit($id, Request $request)
     {
+        $request->session()->put('gejala', $id);
+
         $data = [
             'penyakit' => $this->penyakitModel->detailPenyakit($id),
             'gejala' => $this->gejalaModel->gejaladanpenyakit($id)
         ];
         // $request->session()->put('penyakit', $id);
         return view('admin.gejala.data_gejala', $data);
+    }
+
+    public function detail_gejala_penyakit($id)
+    {
+
+        $data = [
+            'gejala' => $this->gejalaModel->detail_gejala_penyakit($id)
+        ];
+        // $request->session()->put('penyakit', $id);
+        return view('admin.gejala.edit_gejala', $data);
     }
 
     public function formAddGejala($id)
@@ -106,6 +118,18 @@ class gejalaController extends Controller
         $this->gejalaModel->addDataGejala($id, $data);
         return redirect('/gejala/' . $id);
     }
+
+    public function editDataGejala($id)
+    {
+
+        $data = [
+            'nama_gejala' => Request()->nama_gejala,
+        ];
+
+        $this->gejalaModel->editDataGejala($id, $data);
+        return redirect('/gejala/' . session('gejala'));
+    }
+
 
     public function hapusDataGejala($kode)
     {

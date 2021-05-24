@@ -23,10 +23,18 @@ class gejalaModel extends Model
             ->get();
     }
 
+    public function detail_gejala_penyakit($id)
+    {
+        return DB::table('gejala')
+            ->where('id', $id)
+            ->first();
+    }
+
     public function gejaladanpenyakit($id)
     {
         return DB::table('gejala')
             ->leftJoin('penyakit', 'penyakit.id', '=', 'gejala.id_penyakit')
+            ->select('gejala.id', 'gejala.nama_gejala', 'gejala.id_penyakit')
             ->where('gejala.id_penyakit', $id)
             ->get();
     }
@@ -36,6 +44,13 @@ class gejalaModel extends Model
         DB::table('gejala')
             ->where('id_penyakit', $id)
             ->insert($data);
+    }
+
+    public function editDataGejala($id, $data)
+    {
+        DB::table('gejala')
+            ->where('id', $id)
+            ->update($data);
     }
 
     public function hapusDataGejala($kode)
