@@ -61,12 +61,67 @@ class terapiModel extends Model
             ->delete();
     }
 
-    // terapi penyakit
+    // langkah terapi penyakit
 
     public function langkah_terapi($id)
     {
         return DB::table('langkah_terapi')
             ->where('nama_terapi', $id)
             ->get();
+    }
+
+    public function addDataLangkahTerapi($data)
+    {
+        DB::table('langkah_terapi')
+            ->insert($data);
+    }
+
+    public function hapusDataLangkahTerapi($kode)
+    {
+        DB::table('langkah_terapi')
+            ->where('id', $kode)
+            ->delete();
+    }
+
+    // jurnal
+    public function dataJurnal()
+    {
+        return DB::table('jurnal')
+            ->leftJoin('intervensi_komplementer', 'intervensi_komplementer.id', '=', 'jurnal.id_terapi')
+            ->select('jurnal.id', 'intervensi_komplementer.nama_terapi', 'jurnal.link_jurnal')
+            ->get();
+    }
+
+    public function detailDataJurnal($kode)
+    {
+        return DB::table('jurnal')
+            ->where('id', $kode)
+            ->first();
+    }
+
+    public function editDataJurnal($kode, $data)
+    {
+        DB::table('jurnal')
+            ->where('id', $kode)
+            ->update($data);
+    }
+
+    public function dataTerapi()
+    {
+        return DB::table('intervensi_komplementer')
+            ->get();
+    }
+
+    public function addDataJurnal($data)
+    {
+        DB::table('jurnal')
+            ->insert($data);
+    }
+
+    public function hapusDataJurnal($kode)
+    {
+        DB::table('jurnal')
+            ->where('id', $kode)
+            ->delete();
     }
 }

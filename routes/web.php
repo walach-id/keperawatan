@@ -72,11 +72,24 @@ Route::get('/treatment/add', [terapiController::class, 'formTerapi'])->middlewar
 Route::post('/treatment/add/proses', [terapiController::class, 'addDataTerapi'])->middleware(['role:admin']);
 Route::get('/treatment/hapus/{kode}', [terapiController::class, 'hapusDataTerapi'])->middleware(['role:admin']);
 
-Route::get('/step-treatment/{id}', [terapiController::class, 'lengkah_terapi'])->middleware(['role:admin']);
-
-Route::get('/step-treatment/add', function () {
-    return view('admin.langkah_terapi.add_langkah_terapi');
+Route::get('/step-treatment/{id}', [terapiController::class, 'step_terapi'])->middleware(['role:admin']);
+Route::get('/step-treatment/add/{id}', function () {
+    return view('admin/langkah_terapi.add_langkah_terapi');
 })->middleware(['role:admin']);
+Route::post('/step-treatment/add/proses', [terapiController::class, 'addDataStepTerapi'])->middleware(['role:admin']);
+Route::get('/step-treatment/hapus/{kode}', [terapiController::class, 'hapusDataStepGejala'])->middleware(['role:admin']);
+
+Route::get('/jurnal', [terapiController::class, 'dataJurnal'])->middleware(['role:admin']);
+Route::get('/jurnal/edit/{kode}', [terapiController::class, 'detailDataJurnal'])->middleware(['role:admin']);
+Route::post('/jurnal/edit/proses/{kode}', [terapiController::class, 'editDataJurnal'])->middleware(['role:admin']);
+Route::get('/jurnal/add', [terapiController::class, 'formAddJurnal'])->middleware(['role:admin']);
+Route::post('/jurnal/add/proses', [terapiController::class, 'addDataJurnal'])->middleware(['role:admin']);
+Route::get('/jurnal/hapus/{kode}', [terapiController::class, 'hapusDataJurnal'])->middleware(['role:admin']);
+
+Route::get('/review', [RatingController::class, 'dataRating'])->middleware(['role:admin']);
+
+Route::get('/evaluasi-user', [RatingController::class, 'dataEvaluasi'])->middleware(['role:admin']);
+Route::get('/evaluasi-user/view/{kode}', [RatingController::class, 'detailDataEvaluasi'])->middleware(['role:admin']);
 
 
 require __DIR__ . '/auth.php';

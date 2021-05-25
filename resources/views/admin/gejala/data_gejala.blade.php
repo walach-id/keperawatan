@@ -15,7 +15,7 @@
                     <hr>
                     <div class="ml-5 my-3">
                         <div class="py-3 flex justify-center">
-                            <a href="/gejala/add"
+                            <a href="/gejala/add/{{ $penyakit->id }}"
                                 class="bg-blue-500 px-4 py-2 font-semibold tracking-wider text-white rounded hover:bg-blue-600">Tambah
                                 data gejala</a>
                         </div>

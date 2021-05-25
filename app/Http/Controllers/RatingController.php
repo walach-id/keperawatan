@@ -29,4 +29,28 @@ class RatingController extends Controller
         $this->RatingModel->addRating($data);
         return redirect('rating')->with(['pesan' => 'Ulasan kamu berhasil direkam, terimakasih']);
     }
+
+    public function dataRating()
+    {
+        $data = [
+            'rating' => $this->RatingModel->dataRating()
+        ];
+        return view('admin/review.data_review', $data);
+    }
+
+    public function dataEvaluasi()
+    {
+        $data = [
+            'evaluasi' => $this->RatingModel->dataEvaluasi()
+        ];
+        return view('admin/evaluasi.data_evaluasi', $data);
+    }
+
+    public function detailDataEvaluasi($kode)
+    {
+        $data = [
+            'evaluasi' => $this->RatingModel->detailDataEvaluasi($kode)
+        ];
+        return view('admin/evaluasi.detail_evaluasi', $data);
+    }
 }

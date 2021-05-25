@@ -17,8 +17,6 @@ class gejalaController extends Controller
         $this->penyakitModel = new penyakitModel();
     }
 
-
-
     public function index($id, Request $request)
     {
         $data = [
@@ -76,6 +74,7 @@ class gejalaController extends Controller
     // controller admin
     public function gejala_penyakit($id, Request $request)
     {
+        $request->session()->forget('terapi');
         $request->session()->put('gejala', $id);
 
         $data = [

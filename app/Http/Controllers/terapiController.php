@@ -91,8 +91,9 @@ class terapiController extends Controller
         return back();
     }
 
-    public function lengkah_terapi($id, Request $request)
+    public function step_terapi($id, Request $request)
     {
+        $request->session()->forget('gejala');
         $request->session()->put('terapi', $id);
 
         $data = [
@@ -101,5 +102,85 @@ class terapiController extends Controller
         ];
         // $request->session()->put('penyakit', $id);
         return view('admin.langkah_terapi.data_langkah_terapi', $data);
+    }
+
+    public function addDataStepTerapi(Request $request)
+    {
+        $kode = $request->session()->get('terapi');
+        date_default_timezone_set("Asia/Jakarta");
+        $data = [
+            'langkah_terapi' => Request()->content,
+            'nama_terapi' => $kode,
+            'tgl_tambah' => date("Y-m-d h:i:s"),
+        ];
+
+        $this->terapiModel->addDataLangkahTerapi($data);
+        return redirect('/step-treatment/' . $kode);
+    }
+
+    public function hapusDataStepGejala($kode)
+    {
+        $this->terapiModel->hapusDataLangkahTerapi($kode);
+        return back();
+    }
+
+    // jurnal
+
+    public function dataJurnal()
+    {
+        $data = [
+            'jurnal' => $this->terapiModel->dataJurnal()
+        ];
+
+        return view('admin.jurnal.data_jurnal', $data);
+    }
+
+    public function formAddJurnal()
+    {
+        $data = [
+            'jurnal' => $this->terapiModel->dataTerapi()
+        ];
+
+        return view('admin.jurnal.add_jurnal', $data);
+    }
+
+
+
+    public function detailDataJurnal($kode)
+    {
+        $data = [
+            'jurnal' => $this->terapiModel->detailDataJurnal($kode)
+        ];
+
+        return view('admin.jurnal.edit_jurnal', $data);
+    }
+
+    public function editDataJurnal($kode)
+    {
+
+        $data = [
+            'link_jurnal' => Request()->link_jurnal,
+        ];
+
+        $this->terapiModel->editDataJurnal($kode, $data);
+        return redirect('/jurnal');
+    }
+
+    public function addDataJurnal()
+    {
+
+        $data = [
+            'id_terapi' => Request()->nama_terapi,
+            'link_jurnal' => Request()->link_jurnal,
+        ];
+
+        $this->terapiModel->addDataJurnal($data);
+        return redirect('/jurnal');
+    }
+
+    public function hapusDataJurnal($kode)
+    {
+        $this->terapiModel->hapusDataJurnal($kode);
+        return back();
     }
 }

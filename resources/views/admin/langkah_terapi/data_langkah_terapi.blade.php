@@ -15,7 +15,7 @@
                     <hr>
                     <div class="ml-5 my-3">
                         <div class="py-3 flex justify-center">
-                            <a href="/gejala/add"
+                            <a href="/step-treatment/add/{{ $terapi->id }}"
                                 class="bg-blue-500 px-4 py-2 font-semibold tracking-wider text-white rounded hover:bg-blue-600">Tambah
                                 data gejala</a>
                         </div>
@@ -37,7 +37,7 @@
                                                     d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                             </svg>
                                         </a>
-                                        <a href="/gejala/hapus/{{ $data->id }}"
+                                        <a href="/step-treatment/hapus/{{ $data->id }}"
                                             onclick="return confirm('anda yakin ingin hapus data?')"
                                             class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
