@@ -54,6 +54,20 @@ class terapiModel extends Model
         DB::table('intervensi_komplementer')->insert($data);
     }
 
+    public function detailDataTerapi($kode)
+    {
+        return DB::table('intervensi_komplementer')
+            ->where('id', $kode)
+            ->first();
+    }
+
+    public function editDataTerapi($kode, $data)
+    {
+        DB::table('intervensi_komplementer')
+            ->where('id', $kode)
+            ->update($data);
+    }
+
     public function hapusDataTerapi($kode)
     {
         DB::table('intervensi_komplementer')
@@ -68,6 +82,20 @@ class terapiModel extends Model
         return DB::table('langkah_terapi')
             ->where('nama_terapi', $id)
             ->get();
+    }
+
+    public function detail_langkah_terapi($kode)
+    {
+        return DB::table('langkah_terapi')
+            ->where('id', $kode)
+            ->first();
+    }
+
+    public function editDataLangkahTerapi($kode, $data)
+    {
+        DB::table('langkah_terapi')
+            ->where('id', $kode)
+            ->update($data);
     }
 
     public function addDataLangkahTerapi($data)
@@ -89,6 +117,15 @@ class terapiModel extends Model
         return DB::table('jurnal')
             ->leftJoin('intervensi_komplementer', 'intervensi_komplementer.id', '=', 'jurnal.id_terapi')
             ->select('jurnal.id', 'intervensi_komplementer.nama_terapi', 'jurnal.link_jurnal')
+            ->get();
+    }
+
+    public function tampilJurnal()
+    {
+        return DB::table('jurnal')
+            ->leftJoin('intervensi_komplementer', 'intervensi_komplementer.id', '=', 'jurnal.id_terapi')
+            ->leftJoin('penyakit', 'penyakit.id', '=', 'intervensi_komplementer.id')
+            ->select('jurnal.id', 'penyakit.nama_penyakit', 'intervensi_komplementer.nama_terapi', 'jurnal.link_jurnal')
             ->get();
     }
 

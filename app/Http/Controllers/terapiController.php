@@ -85,6 +85,26 @@ class terapiController extends Controller
         return redirect('/treatment');
     }
 
+    public function detailDataTerapi($kode)
+    {
+        $data = [
+            'terapi' => $this->terapiModel->detailDataTerapi($kode)
+        ];
+
+        return view('admin/terapi.edit_terapi', $data);
+    }
+
+    public function editDataTerapi($kode)
+    {
+        date_default_timezone_set("Asia/Jakarta");
+        $data = [
+            'nama_terapi' => Request()->nama_terapi,
+        ];
+
+        $this->terapiModel->editDataTerapi($kode, $data);
+        return redirect('/treatment');
+    }
+
     public function hapusDataTerapi($kode)
     {
         $this->terapiModel->hapusDataTerapi($kode);
@@ -102,6 +122,27 @@ class terapiController extends Controller
         ];
         // $request->session()->put('penyakit', $id);
         return view('admin.langkah_terapi.data_langkah_terapi', $data);
+    }
+
+    public function detailDataStepTerapi($kode)
+    {
+        $data = [
+            'terapi' => $this->terapiModel->detail_langkah_terapi($kode)
+        ];
+
+        return view('admin/langkah_terapi.edit_langkah_terapi', $data);
+    }
+
+    public function editDataStepTerapi($kode, Request $request)
+    {
+        $id = $request->session()->get('terapi');
+
+        $data = [
+            'langkah_terapi' => Request()->content,
+        ];
+
+        $this->terapiModel->editDataLangkahTerapi($kode, $data);
+        return redirect('/step-treatment/' . $id);
     }
 
     public function addDataStepTerapi(Request $request)
@@ -133,6 +174,15 @@ class terapiController extends Controller
         ];
 
         return view('admin.jurnal.data_jurnal', $data);
+    }
+
+    public function tampilJurnal()
+    {
+        $data = [
+            'jurnal' => $this->terapiModel->tampilJurnal()
+        ];
+
+        return view('referensi_jurnal', $data);
     }
 
     public function formAddJurnal()

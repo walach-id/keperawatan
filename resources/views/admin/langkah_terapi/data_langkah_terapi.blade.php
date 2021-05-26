@@ -17,7 +17,7 @@
                         <div class="py-3 flex justify-center">
                             <a href="/step-treatment/add/{{ $terapi->id }}"
                                 class="bg-blue-500 px-4 py-2 font-semibold tracking-wider text-white rounded hover:bg-blue-600">Tambah
-                                data gejala</a>
+                                data langkah terapi</a>
                         </div>
 
                         <table class="w-full">
@@ -28,8 +28,8 @@
                                     <td class="px-5">
                                         {!! $data->langkah_terapi !!}
                                     </td>
-                                    <td class="flex">
-                                        <a href="/gejala/edit/{{ $data->id }}"
+                                    <td class="flex justify-end">
+                                        <a href="/step-treatment/edit/{{ $data->id }}"
                                             class="w-4 mx-2 transform hover:text-purple-500 hover:scale-110">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke="currentColor">

@@ -6,7 +6,7 @@
             <!-- component -->
             <div class="w-full pt-3 block items-center justify-center xl:flex lg:flex">
 
-                <p class="text-4xl mb-5 ">Ubah Gejala Penyakit</p>
+                <p class="text-4xl mb-5 ">Ubah Data Terapi</p>
 
             </div>
             <div class="flex justify-center">
@@ -14,20 +14,20 @@
                     {{-- <p class="text-2xl my-3 text-center">Keluhan: {{ $penyakit->nama_penyakit }}</p> --}}
                     <hr>
                     <div class="m-7 max-w-md">
-                        <form action="/gejala/edit/proses/{{ $gejala->id }}" method="POST" id="form">
+                        <form action="/treatment/edit/proses/{{ $terapi->id }}" method="POST" id="form">
                             @csrf
 
                             <div class="mb-6">
-                                <label class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Gejala
-                                    Penyakit Terdahulu</label>
-                                <input type="text" value="{{ $gejala->nama_gejala }}" id="name" disabled
+                                <label class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Nama Terapi
+                                    Terdahulu</label>
+                                <input type="text" value="{{ $terapi->nama_terapi }}" id="name" disabled
                                     class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
                             </div>
 
                             <div class="mb-6">
-                                <label class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Gejala
-                                    Penyakit Terbaru</label>
-                                <input type="text" name="nama_gejala" id="name" placeholder="cth: Merasakan Nyeri" required
+                                <label class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Nama Terapi
+                                    Terbaru</label>
+                                <input type="text" name="nama_terapi" id="name" placeholder="cth: GUIDED IMAGERY" required
                                     class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" />
                             </div>
 

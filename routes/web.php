@@ -38,6 +38,7 @@ Route::get('step_terapi/{id}', [terapiController::class, 'langkah_terapi']);
 Route::get('evaluasi', [evaluasiController::class, 'index']);
 Route::get('evaluasi/detail/{unique_id}', [evaluasiController::class, 'detail']);
 Route::get('evaluasi/pra/{unique_id}', [evaluasiController::class, 'pra_evaluasi']);
+Route::get('/referensi-jurnal', [terapiController::class, 'tampilJurnal']);
 
 Route::get('rating', [RatingController::class, 'rating']);
 Route::post('/add/rating', [RatingController::class, 'add_rating']);
@@ -71,6 +72,8 @@ Route::get('/treatment', [terapiController::class, 'namaTerapi'])->middleware(['
 Route::get('/treatment/add', [terapiController::class, 'formTerapi'])->middleware(['role:admin']);
 Route::post('/treatment/add/proses', [terapiController::class, 'addDataTerapi'])->middleware(['role:admin']);
 Route::get('/treatment/hapus/{kode}', [terapiController::class, 'hapusDataTerapi'])->middleware(['role:admin']);
+Route::get('/treatment/edit/{kode}', [terapiController::class, 'detailDataTerapi'])->middleware(['role:admin']);
+Route::post('/treatment/edit/proses/{kode}', [terapiController::class, 'editDataTerapi'])->middleware(['role:admin']);
 
 Route::get('/step-treatment/{id}', [terapiController::class, 'step_terapi'])->middleware(['role:admin']);
 Route::get('/step-treatment/add/{id}', function () {
@@ -78,6 +81,9 @@ Route::get('/step-treatment/add/{id}', function () {
 })->middleware(['role:admin']);
 Route::post('/step-treatment/add/proses', [terapiController::class, 'addDataStepTerapi'])->middleware(['role:admin']);
 Route::get('/step-treatment/hapus/{kode}', [terapiController::class, 'hapusDataStepGejala'])->middleware(['role:admin']);
+Route::get('/step-treatment/edit/{kode}', [terapiController::class, 'detailDataStepTerapi'])->middleware(['role:admin']);
+Route::post('/step-treatment/edit/proses/{kode}', [terapiController::class, 'editDataStepTerapi'])->middleware(['role:admin']);
+
 
 Route::get('/jurnal', [terapiController::class, 'dataJurnal'])->middleware(['role:admin']);
 Route::get('/jurnal/edit/{kode}', [terapiController::class, 'detailDataJurnal'])->middleware(['role:admin']);

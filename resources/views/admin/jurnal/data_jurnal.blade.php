@@ -46,7 +46,7 @@
                                                     blm ada jurnal yang di tautkan
                                                 @else
                                                     <a class="text-blue-600 hover:text-gray-300"
-                                                        href="{{ $data->link_jurnal }}">link
+                                                        href="{{ $data->link_jurnal }}" target="_blank">link
                                                         jurnal</a>
                                                 @endif
                                             </span>

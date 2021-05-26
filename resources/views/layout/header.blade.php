@@ -7,8 +7,7 @@
           ">
     <!-- Navbar -->
     <div class="header-3-2" style="font-family: 'Poppins', sans-serif">
-        <header x-data="{ open: false }"
-            class="w-full grid grid-cols-1 lg:grid-cols-3 py-8 lg:px-24 md:px-16 sm:px-8 px-8">
+        <header x-data="{ open: false }" class="w-full grid grid-cols-1 lg:grid-cols-3 py-8 lg:px-20 md:px-14 sm:px-8">
             <div class="flex items-center justify-between">
                 <a href="#" class="flex items-center">
                     <img src="/image/1618636686949.png" alt="" class="" width="70" height="70" />
@@ -41,6 +40,8 @@
                             class="text-sm text-black-2 font-light mx-0 lg:mx-5 my-4 lg:my-0 relative">Home</a>
                         <a href="{{ url('/evaluasi') }}"
                             class="text-sm text-black-2 font-light mx-0 lg:mx-5 my-4 lg:my-0 relative">Evaluasi</a>
+                        <a href="{{ url('/referensi-jurnal') }}"
+                            class="text-sm text-black-2 font-light mx-0 lg:mx-5 my-4 lg:my-0 relative">jurnal</a>
                         <a href="{{ url('/rating') }}"
                             class="text-sm text-black-2 font-light mx-0 lg:mx-5 my-4 lg:my-0 relative">Ratings & Reviews</a>
                         <form method="POST" action="{{ route('logout') }}">
@@ -108,7 +109,7 @@
 
                                         <x-dropdown-link :href="route('logout')"
                                             onclick="event.preventDefault();
-                                                                                                                                                                                                    this.closest('form').submit();">
+                                                                                                                                                                                                                                                this.closest('form').submit();">
                                             {{ __('Log Out') }}
                                         </x-dropdown-link>
                                     </form>

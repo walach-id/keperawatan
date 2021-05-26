@@ -57,7 +57,7 @@ class RegisteredUserController extends Controller
         $role = Auth::user()->role_id;
         switch ($role) {
             case '1':
-                return redirect('/admin');
+                return redirect('/evaluasi-user');
                 break;
             case '2':
                 return redirect('/');
